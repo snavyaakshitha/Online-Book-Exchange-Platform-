@@ -1,0 +1,173 @@
+### 
+#register user
+POST http://localhost:4000/users/signup
+Content-Type: application/json
+
+{
+ "name": "virat kohli",
+ "email": "vk@gmail.com",
+ "password": "vk@12345678",
+ "passwordConfirmation": "vk@12345678"
+}'
+
+
+### 
+#Login user
+POST http://localhost:4000/users/login HTTP/1.1
+Content-Type: application/json
+
+{ 
+    "email": "vk@gmail.com",
+    "password": "vk@12345678"
+}
+
+
+@token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NWFlNTI0YzhkYTc4NjEyODVjZWJiNiIsImlhdCI6MTcwMDQ1ODcyOCwiZXhwIjoxNzAxMzIyNzI4fQ.7BFv2GcjeetdGTZOG6GbfbyHadYIe22nCEG1wzcy7v8"
+       
+@baseUrl = http://localhost:4000
+
+###
+# GET ALL BOOKS
+GET {{baseUrl}}/books
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NWFlNTI0YzhkYTc4NjEyODVjZWJiNiIsImlhdCI6MTcwMDQ1ODcyOCwiZXhwIjoxNzAxMzIyNzI4fQ.7BFv2GcjeetdGTZOG6GbfbyHadYIe22nCEG1wzcy7v8
+
+###
+POST {{baseUrl}}/books
+# POST NEW BOOK
+Content-Type: application/json
+Authorization: jwt={{token}}
+
+{
+    "title": "Harry Potter and the Scorcer's Stone",
+    "author": "J.K. Rowling",
+    "description": "Harry Potter and the Philosopher's Stone is a fantasy novel written by British author J. K. Rowling.",
+    "exchangeType": "borrow",
+    "owner": "6559334aa50b67e482c33167",
+    "status": "available"
+}
+
+###
+# POST NEW BOOK
+POST {{baseUrl}}/books
+Content-Type: application/json
+Authorization: jwt={{token}}
+
+{
+    "title": "Harry Potter and the Chamber of Secrets",
+    "author": "J.K. Rowling",
+    "description": "Harry Potter and the Chamber of Secrets is a fantasy novel written by British author J. K. Rowling and the second novel in the Harry Potter series.",
+    "exchangeType": "borrow",
+    "owner": "6559334aa50b67e482c33167",
+    "status": "available"
+}
+
+###
+# POST NEW BOOK
+POST {{baseUrl}}/books
+Content-Type: application/json
+Authorization: jwt={{token}}
+
+{
+    "title": "Harry Potter and the Prisoner of Azkaban",
+    "author": "J.K. Rowling",
+    "description": "Harry Potter and the Prisoner of Azkaban is a fantasy novel written by British author J. K. Rowling and is the third in the Harry Potter series. The book follows Harry Potter, a young wizard, in his third year at Hogwarts School of Witchcraft and Wizardry.",
+    "exchangeType": "borrow",
+    "owner": "6559334aa50b67e482c33167",
+    "status": "available"
+}
+
+###
+# POST NEW BOOK
+POST {{baseUrl}}/books
+Content-Type: application/json
+Authorization: jwt={{token}}
+
+{
+    "title": "Harry Potter and the Goblet of Fire",
+    "author": "J.K. Rowling",
+    "description": "Harry Potter and the Goblet of Fire is a fantasy novel written by British author J. K. Rowling and the fourth novel in the Harry Potter series.",
+    "exchangeType": "borrow",
+    "owner": "6559334aa50b67e482c33167",
+    "status": "available"
+}
+
+###
+# POST NEW BOOK
+POST {{baseUrl}}/books
+Content-Type: application/json
+Authorization: jwt={{token}}
+
+{
+    "title": "Harry Potter and the Order of the Phoenix",
+    "author": "J.K. Rowling",
+    "description": "Harry Potter is due to start his fifth year at Hogwarts School of Witchcraft and Wizardry. He is desperate to get back to school and find out why his friends Ron and Hermione have been so secretive all summer. However, what Harry is about to discover in his new year at Hogwarts will turn his world upside down.",
+    "exchangeType": "borrow",
+    "owner": "6559334aa50b67e482c33167",
+    "status": "available"
+}
+
+###
+# GET ALL BOOKS
+GET http://localhost:4000/books HTTP/1.1
+Host: localhost:4000
+
+
+###
+# GET BOOK BY ID
+GET {{baseUrl}}/books/655af1c6c8da7861285cebe8
+Authorization: jwt={{token}}
+
+###
+# GET BOOK BY ID
+GET {{baseUrl}}/books/655ae6adc8da7861285cebc2
+Authorization: jwt={{token}}
+
+###
+# GET BOOK BY ID
+GET {{baseUrl}}/books/655ae71bc8da7861285cebd4
+Authorization: jwt={{token}}
+
+###
+# UPDATE BOOK
+PUT {{baseUrl}}/books/update/655ae6adc8da7861285cebc2
+Content-Type: application/json
+Authorization: jwt={{token}}
+
+{
+    "title": "Harry Potter and the Half-Blood Prince",
+    "description": "Harry Potter and the Half-Blood Prince is a fantasy novel written by British author J. K. Rowling and the sixth and penultimate novel in the Harry Potter series."
+}
+
+###
+# UPDATE BOOK
+PUT {{baseUrl}}/books/update/655af1a1c8da7861285cebe5
+Content-Type: application/json
+Authorization: jwt={{token}}
+
+{
+    "title": "Harry Potter and the Deathly Hallows",
+    "description": "Harry Potter and the Deathly Hallows is a fantasy novel written by British author J. K. Rowling and the seventh and final novel in the Harry Potter series. It was released on 21 July 2007 in the United Kingdom by Bloomsbury Publishing, in the United States by Scholastic, and in Canada by Raincoast Books."
+}
+
+###
+# UPPDATE BOOK
+PUT {{baseUrl}}/books/update/655af1f7c8da7861285cebf4
+Content-Type: application/json
+Authorization: jwt={{token}}
+
+{
+    "title": "Fantastic Beasts and Where to Find Them",
+    "description": "Fantastic Beasts and Where to Find Them is a 2001 guide book written by British author J. K. Rowling about the magical creatures in the Harry Potter universe."
+}
+
+###
+# DELETE BOOK
+DELETE {{baseUrl}}/books/delete/65486c18d5d9a90392f347c5
+
+###
+# DELETE BOOK
+DELETE {{baseUrl}}/books/delete/655a4f759227ca34dfec345d
+
+###
+# DELETE BOOK
+DELETE {{baseUrl}}/books/delete/65486c18d5d9a90392f347c5
